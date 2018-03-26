@@ -42,8 +42,9 @@
   ],
   "dependencies": {
     "angular": ">= 1.2",
-    "tv4": "~1.0.15",
-    "angular-sanitize": ">= 1.2"
+    "angular-sanitize": ">= 1.2",
+    "json-schema-form-core": "^1.0.0-alpha.2",
+    "tv4": "~1.0.15"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
