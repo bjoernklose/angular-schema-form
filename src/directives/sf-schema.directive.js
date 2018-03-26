@@ -173,19 +173,185 @@ sfSelect, sfBuilder) {
         // ok, now that that is done let's set any defaults
         if (!scope.options || scope.options.setSchemaDefaults !== false) {
           schemaForm.traverseSchema(schema, function(prop, path) {
-            if (angular.isDefined(prop['default'])) {
-              let val = sfSelect(path, scope.model);
-              if (angular.isUndefined(val)) {
-                let defVal = prop['default'];
-                if (angular.isObject(defVal)) defVal = angular.copy(defVal);
-                sfSelect(path, scope.model, defVal);
-              }
-            }
+              // PROBLEM: to reflect visibility rules in model, need to mark all elements as visible (true / false)
+              // ASSUMPTION: not every subelement has a direct condition assigned,
+              // it might be inheriting from parent or grandparent
+              // SOLUTION: scan all nodes, mark visible or not based on condition parsing
+
+              // PROBLEM 2: condition might rely on a default value from model that was not set at this point
+              // ASSUMPTION: doing extra rounds through form and schema is fast enough
+              // SOLUTION:
+              //  1. create all defaults once (without checking form visibility)
+              //  2. mark visibility based on that
+              //  3. go through model again and now remove all values that should not be there (based on form rules)
+              setDefaults(schema, form, false);
+              // console.log('scope before', scope.model);
+              markVisibility(form);
+              setDefaults(schema, form, true);
+              // console.log('scope after', scope.model);
           });
         }
 
         scope.$emit('sf-render-finished', element);
       };
+
+      /**
+       * go through entire form and set all default values based on schema definition
+       * (if onlyVisible is set to true,
+       *  only set values where any referencing form.key element has its visibility 'condition' evaluating to true)
+       * @param schema
+       * @param form
+       * @param onlyVisible
+       */
+      function setDefaults(schema, form, onlyVisible) {
+
+          schemaForm.traverseSchema(schema, function(prop, path) {
+
+              // look only at schema fields that have a 'default' prop
+              if (angular.isDefined(prop['default'])) {
+
+                  // let val = sfSelect(path, scope.model);
+                  // if no value is currently set in the models field
+                  if (onlyVisible) {
+                      var fieldIsVisible = true;
+                      // find all fields in form that have key === path (might be more than 1)
+                      var fields = [];
+
+                      // for each of them, check previously set "visible" element
+                      // if the form is currently visible (meaning evaluating the "condition" prop resulted in true
+
+                      traverseIn(form, null, function (item, parent) {
+                          if (JSON.stringify(item.key) === JSON.stringify(path)) {
+                              fields.push(item);
+                          }
+                      });
+
+                      if (fields.length > 0) {
+                          // mark as false (invisible) if at least one of the fields is invisible
+                          fieldIsVisible = _.reduce(fields, function (memo, now) {
+                              return memo && now.visibl;
+                          }, true);
+                      }
+
+                      // delete from model if it's not visible in form currently
+                      if (fieldIsVisible === false) {
+                          deepDelete(scope.model, path);
+                          return;
+                      }
+                  }
+
+                  // Set to default value
+                  let defVal = prop['default'];
+                  if (angular.isObject(defVal)) defVal = angular.copy(defVal);
+                  sfSelect(path, scope.model, defVal);
+              }
+          });
+
+          if (onlyVisible) {
+              // TODO: shake tree (remove all subelements that are empty objects (such as Bankverbindung : {})
+              shakeTree(scope.model);
+          }
+      }
+
+      /**
+       * remove all sub-nodes that are just empty objects
+       * @param obj
+       */
+      function shakeTree(obj) {
+          Object.keys(obj).forEach(function(key) {
+              if (obj[key] && typeof obj[key] === 'object') {
+                  // console.log('now at', key, obj[key]);
+                  // if it's empty, delete
+                  if (Object.keys(obj[key]).length === 0) {
+                     // console.log('ready to delete', key, obj[key]);
+                      delete obj[key];
+                  }
+                  else {
+                      shakeTree(obj[key]);
+                  }
+              }
+          });
+      }
+
+      /**
+       * traverse through an object and remove a specified grand-child node
+       * based on https://stackoverflow.com/a/37987997
+       * @param obj
+       * @param path_to_key
+       * @returns {*}
+       */
+      function deepDelete(obj, path_to_key) {
+        if (path_to_key.length === 1) {
+            delete obj[path_to_key[0]];
+            return true;
+        }
+        else {
+            if (obj[path_to_key[0]])
+                return deepDelete(obj[path_to_key[0]], path_to_key.slice(1));
+            else
+                return false;
+        }
+      }
+
+      /**
+       * evaluate angular expressions (usually 'condition' field of a form item)
+       * (this is normally done inside an ng-template but we need the results before actual rendering
+       * @param condition
+       * @returns {boolean}
+       */
+      function evalCondition(condition) {
+          var visible = true;
+          if (condition !== undefined && condition !== '') {
+              // parse and run on actual scope.model
+              visible = scope.$eval(condition);
+          }
+          // console.log('now at condition', condition, visible);
+          return visible;
+      }
+
+      /**
+       * traverse nested elements (like traverseForm)
+       * @param tree
+       * @param parent
+       * @param callback
+       */
+      function traverseIn(tree, parent, callback) {
+          callback(tree, parent);
+
+          if (_.isArray(tree)) {
+              // Main form is just a single array, so make it behave like subelements
+              tree.items = tree;
+          }
+          if (tree.hasOwnProperty('items')) {
+              tree.items.forEach(function(subtree) {
+                  traverseIn(subtree, tree, callback);
+              });
+          }
+      }
+
+      /**
+       * traverse entire form and add a new property "visibl"
+       * to directly mark it with results of parsing a "condition" angular expression
+       * @param form
+       */
+      function markVisibility(form) {
+          traverseIn(form, null, function(item, parent) {
+              if (item.hasOwnProperty('condition') === false) {
+                  if (parent !== null) {
+                      item.visibl = parent.visibl;
+                  }
+                  else {
+                      item.visibl = true;
+                  }
+              }
+              else if (item.hasOwnProperty('condition')) {
+                  item.visibl = evalCondition(item.condition);
+              }
+              else {
+                  item.visibl = false;
+              }
+          });
+      }
 
       let defaultForm = [ '*' ];
 
