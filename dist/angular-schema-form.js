@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form
  * @version 1.0.0-alpha.5
- * @date Mon, 26 Mar 2018 05:58:40 GMT
+ * @date Tue, 27 Mar 2018 05:12:46 GMT
  * @link https://github.com/json-schema-form/angular-schema-form
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
@@ -71,7 +71,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2718,7 +2718,7 @@ module.exports = __webpack_require__(4);
 /***/ })
 /******/ ]);
 //# sourceMappingURL=json-schema-form-core.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(18).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(19).setImmediate))
 
 /***/ }),
 /* 2 */
@@ -2748,7 +2748,8 @@ module.exports = g;
 
 
 /***/ }),
-/* 3 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2757,18 +2758,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_json_schema_form_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_json_schema_form_core__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sf_builder_provider__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_schema_form_decorators_provider__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_schema_form_provider__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sf_error_message_provider__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sf_path_provider__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_sf_changed_directive__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_sf_field_directive__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_sf_message_directive__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_sf_array_directive__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_sf_key_directive__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_sf_schema_directive__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_schema_validate_directive__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sf_builder_provider__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_schema_form_decorators_provider__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_schema_form_provider__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sf_error_message_provider__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sf_path_provider__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_sf_changed_directive__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_sf_field_directive__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_sf_message_directive__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_sf_array_directive__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_sf_key_directive__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_sf_schema_directive__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_schema_validate_directive__ = __webpack_require__(5);
 
 
 
@@ -2822,7 +2823,7 @@ __WEBPACK_IMPORTED_MODULE_1_angular___default.a.module('schemaForm', deps)
 .directive('sfChanged', __WEBPACK_IMPORTED_MODULE_7_sf_changed_directive__["a" /* default */]).directive('sfField', ['$parse', '$compile', '$interpolate', 'sfErrorMessage', 'sfPath', 'sfSelect', __WEBPACK_IMPORTED_MODULE_8_sf_field_directive__["a" /* default */]]).directive('sfMessage', ['$injector', 'sfErrorMessage', __WEBPACK_IMPORTED_MODULE_9_sf_message_directive__["a" /* default */]]).directive('sfNewArray', ['sfSelect', 'sfPath', 'schemaForm', __WEBPACK_IMPORTED_MODULE_10_sf_array_directive__["a" /* default */]]).directive('sfSchema', ['$compile', '$http', '$templateCache', '$q', 'schemaForm', 'schemaFormDecorators', 'sfSelect', 'sfBuilder', __WEBPACK_IMPORTED_MODULE_12_sf_schema_directive__["a" /* default */]]).directive('schemaValidate', ['sfValidator', '$parse', 'sfSelect', '$interpolate', __WEBPACK_IMPORTED_MODULE_13_schema_validate_directive__["a" /* default */]]).directive('sfKeyController', ['sfPath', __WEBPACK_IMPORTED_MODULE_11_sf_key_directive__["a" /* default */]]);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3033,7 +3034,7 @@ __WEBPACK_IMPORTED_MODULE_1_angular___default.a.module('schemaForm', deps)
 });
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3274,7 +3275,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3320,7 +3321,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3666,7 +3667,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3709,7 +3710,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3818,12 +3819,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angular__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 
 
 /**
@@ -3989,21 +3992,177 @@ FIXME: real documentation
         // ok, now that that is done let's set any defaults
         if (!scope.options || scope.options.setSchemaDefaults !== false) {
           schemaForm.traverseSchema(schema, function (prop, path) {
+            // PROBLEM: to reflect visibility rules in model, need to mark all elements as visible (true / false)
+            // ASSUMPTION: not every subelement has a direct condition assigned,
+            // it might be inheriting from parent or grandparent
+            // SOLUTION: scan all nodes, mark visible or not based on condition parsing
 
-            // TODO: (bjk) add modifications here
-            if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isDefined(prop['default'])) {
-              var val = sfSelect(path, scope.model);
-              if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isUndefined(val)) {
-                var defVal = prop['default'];
-                if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isObject(defVal)) defVal = __WEBPACK_IMPORTED_MODULE_0_angular___default.a.copy(defVal);
-                sfSelect(path, scope.model, defVal);
-              }
-            }
+            // PROBLEM 2: condition might rely on a default value from model that was not set at this point
+            // ASSUMPTION: doing extra rounds through form and schema is fast enough
+            // SOLUTION:
+            //  1. create all defaults once (without checking form visibility)
+            //  2. mark visibility based on that
+            //  3. go through model again and now remove all values that should not be there (based on form rules)
+            setDefaults(schema, form, false);
+            // console.log('scope before', scope.model);
+            markVisibility(form);
+            setDefaults(schema, form, true);
+            // console.log('scope after', scope.model);
           });
         }
 
         scope.$emit('sf-render-finished', element);
       };
+
+      /**
+       * go through entire form and set all default values based on schema definition
+       * (if onlyVisible is set to true,
+       *  only set values where any referencing form.key element has its visibility 'condition' evaluating to true)
+       * @param schema
+       * @param form
+       * @param onlyVisible
+       */
+      function setDefaults(schema, form, onlyVisible) {
+
+        schemaForm.traverseSchema(schema, function (prop, path) {
+
+          // look only at schema fields that have a 'default' prop
+          if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isDefined(prop['default'])) {
+
+            // let val = sfSelect(path, scope.model);
+            // if no value is currently set in the models field
+            if (onlyVisible) {
+              var fieldIsVisible = true;
+              // find all fields in form that have key === path (might be more than 1)
+              var fields = [];
+
+              // for each of them, check previously set "visible" element
+              // if the form is currently visible (meaning evaluating the "condition" prop resulted in true
+
+              traverseIn(form, null, function (item, parent) {
+                if (JSON.stringify(item.key) === JSON.stringify(path)) {
+                  fields.push(item);
+                }
+              });
+
+              if (fields.length > 0) {
+                // mark as false (invisible) if at least one of the fields is invisible
+                fieldIsVisible = _.reduce(fields, function (memo, now) {
+                  return memo && now.visibl;
+                }, true);
+              }
+
+              // delete from model if it's not visible in form currently
+              if (fieldIsVisible === false) {
+                deepDelete(scope.model, path);
+                return;
+              }
+            }
+
+            // Set to default value
+            var defVal = prop['default'];
+            if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isObject(defVal)) defVal = __WEBPACK_IMPORTED_MODULE_0_angular___default.a.copy(defVal);
+            sfSelect(path, scope.model, defVal);
+          }
+        });
+
+        if (onlyVisible) {
+          // TODO: shake tree (remove all subelements that are empty objects (such as Bankverbindung : {})
+          shakeTree(scope.model);
+        }
+      }
+
+      /**
+       * remove all sub-nodes that are just empty objects
+       * @param obj
+       */
+      function shakeTree(obj) {
+        Object.keys(obj).forEach(function (key) {
+          if (obj[key] && _typeof(obj[key]) === 'object') {
+            // console.log('now at', key, obj[key]);
+            // if it's empty, delete
+            if (Object.keys(obj[key]).length === 0) {
+              // console.log('ready to delete', key, obj[key]);
+              delete obj[key];
+            } else {
+              shakeTree(obj[key]);
+            }
+          }
+        });
+      }
+
+      /**
+       * traverse through an object and remove a specified grand-child node
+       * based on https://stackoverflow.com/a/37987997
+       * @param obj
+       * @param path_to_key
+       * @returns {*}
+       */
+      function deepDelete(obj, path_to_key) {
+        if (path_to_key.length === 1) {
+          delete obj[path_to_key[0]];
+          return true;
+        } else {
+          if (obj[path_to_key[0]]) return deepDelete(obj[path_to_key[0]], path_to_key.slice(1));else return false;
+        }
+      }
+
+      /**
+       * evaluate angular expressions (usually 'condition' field of a form item)
+       * (this is normally done inside an ng-template but we need the results before actual rendering
+       * @param condition
+       * @returns {boolean}
+       */
+      function evalCondition(condition) {
+        var visible = true;
+        if (condition !== undefined && condition !== '') {
+          // parse and run on actual scope.model
+          visible = scope.$eval(condition);
+        }
+        // console.log('now at condition', condition, visible);
+        return visible;
+      }
+
+      /**
+       * traverse nested elements (like traverseForm)
+       * @param tree
+       * @param parent
+       * @param callback
+       */
+      function traverseIn(tree, parent, callback) {
+        callback(tree, parent);
+
+        if (_.isArray(tree)) {
+          // Main form is just a single array, so make it behave like subelements
+          tree.items = tree;
+        }
+        if (tree.hasOwnProperty('items')) {
+          tree.items.forEach(function (subtree) {
+            traverseIn(subtree, tree, callback);
+          });
+        }
+      }
+
+      /**
+       * traverse entire form and add a new property "visibl"
+       * to directly mark it with results of parsing a "condition" angular expression
+       * @param form
+       */
+      function markVisibility(form) {
+        traverseIn(form, null, function (item, parent) {
+          if (item.hasOwnProperty('condition') === false) {
+            if (parent !== null) {
+              item.visibl = parent.visibl;
+            } else {
+              item.visibl = true;
+            }
+          } else if (item.hasOwnProperty('condition')) {
+            item.visibl = evalCondition(item.condition);
+          } else {
+            item.visibl = false;
+          }
+        });
+      }
 
       var defaultForm = ['*'];
 
@@ -4063,7 +4222,7 @@ FIXME: real documentation
 });
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4610,7 +4769,7 @@ FIXME: real documentation
 });;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4744,7 +4903,7 @@ FIXME: real documentation
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5070,7 +5229,7 @@ FIXME: real documentation
 });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5212,7 +5371,7 @@ FIXME: real documentation
 });
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5259,7 +5418,7 @@ var sfPathProviderClass = function () {
 /* harmony default export */ __webpack_exports__["a"] = (sfPathProviderClass);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -5449,7 +5608,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -5639,10 +5798,10 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(17)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
@@ -5695,7 +5854,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(17);
+__webpack_require__(18);
 // On some exotic environments, it's not clear which object `setimmeidate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -5709,11 +5868,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 19 */
+/* 20 */,
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(4);
 
 
 /***/ })
