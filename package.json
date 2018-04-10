@@ -43,7 +43,7 @@
   "dependencies": {
     "angular": ">= 1.2",
     "angular-sanitize": ">= 1.2",
-    "json-schema-form-core": "^1.0.0-alpha.2",
+    "json-schema-form-core": "json-schema-form/json-schema-form-core.git#v1.0.0-alpha.4",
     "tv4": "~1.0.15"
   },
   "devDependencies": {
