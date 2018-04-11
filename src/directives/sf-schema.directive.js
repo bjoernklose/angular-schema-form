@@ -220,7 +220,7 @@ sfSelect, sfBuilder) {
                       // for each of them, check previously set "visible" element
                       // if the form is currently visible (meaning evaluating the "condition" prop resulted in true
 
-                      traverseIn(form, null, function (item, parent) {
+                      traverseFlat(form, function (item) {
                           if (JSON.stringify(item.key) === JSON.stringify(path)) {
                               fields.push(item);
                           }
@@ -327,6 +327,31 @@ sfSelect, sfBuilder) {
                   traverseIn(subtree, tree, callback);
               });
           }
+      }
+
+      /**
+      * traverse tree, but in a single list, so we can handle setTimeout better
+      * and avoid stack overflows
+      * based on https://stackoverflow.com/a/49523815
+      */
+      function traverseFlat(queue, callback) {
+        var current = queue.shift();
+        if (current === undefined) {
+          return;
+        }
+
+        // TODO: actual action goes here
+        callback(current);
+        //console.log(current, 'action jackson');
+
+        if (current.items) {
+          current.items.forEach(node => {
+            queue.push(node)
+          })
+        }
+        setTimeout(function() {
+          traverseFlat(queue, callback);
+        }, 25); // based on https://www.nczonline.net/blog/2009/08/11/timed-array-processing-in-javascript/
       }
 
       /**
