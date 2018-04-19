@@ -172,24 +172,27 @@ sfSelect, sfBuilder) {
 
         // ok, now that that is done let's set any defaults
         if (!scope.options || scope.options.setSchemaDefaults !== false) {
-          schemaForm.traverseSchema(schema, function(prop, path) {
-              // PROBLEM: to reflect visibility rules in model, need to mark all elements as visible (true / false)
-              // ASSUMPTION: not every subelement has a direct condition assigned,
-              // it might be inheriting from parent or grandparent
-              // SOLUTION: scan all nodes, mark visible or not based on condition parsing
+            // PROBLEM: to reflect visibility rules in model, need to mark all elements as visible (true / false)
+            // ASSUMPTION: not every subelement has a direct condition assigned,
+            // it might be inheriting from parent or grandparent
+            // SOLUTION: scan all nodes, mark visible or not based on condition parsing
+            // and
+            // PROBLEM 2: condition might rely on a default value from model that was not set at this point
+            // ASSUMPTION: doing extra rounds through form and schema is fast enough
+            // SOLUTION:
+            //  1. create all defaults once (without checking form visibility)
+            //  2. mark visibility based on that
+            //  3. go through model again and now remove all values that should not be there (based on form rules)
 
-              // PROBLEM 2: condition might rely on a default value from model that was not set at this point
-              // ASSUMPTION: doing extra rounds through form and schema is fast enough
-              // SOLUTION:
-              //  1. create all defaults once (without checking form visibility)
-              //  2. mark visibility based on that
-              //  3. go through model again and now remove all values that should not be there (based on form rules)
-              setDefaults(schema, form, false);
-              // console.log('scope before', scope.model);
-              markVisibility(form);
-              setDefaults(schema, form, true);
-              // console.log('scope after', scope.model);
-          });
+            var start = new Date();
+            // console.log(start, 'before 1. setDefaults');
+            setDefaults(schema, form, false);
+            // console.log('scope before', scope.model);
+            // console.log(new Date()-start, 'before markVisibility');
+            markVisibility(form);
+            // console.log(new Date()-start, 'before 2. setDefaults');
+            setDefaults(schema, form, true);
+            console.log(new Date()-start, 'after 2. setDefaults');
         }
 
         scope.$emit('sf-render-finished', element);
@@ -258,6 +261,9 @@ sfSelect, sfBuilder) {
        * @param obj
        */
       function shakeTree(obj) {
+          if (obj === null || obj === undefined) {
+              return;
+          }
           Object.keys(obj).forEach(function(key) {
               if (obj[key] && typeof obj[key] === 'object') {
                   // console.log('now at', key, obj[key]);
@@ -377,7 +383,6 @@ sfSelect, sfBuilder) {
               }
           });
       }
-
       let defaultForm = [ '*' ];
 
       // Since we are dependant on up to three
