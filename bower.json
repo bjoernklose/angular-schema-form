@@ -1,5 +1,6 @@
 {
   "name": "angular-schema-form",
+  "version": "1.0.0-alpha.5",
   "main": "dist/angular-schema-form.js",
   "authors": [
     "Textalk",
