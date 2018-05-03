@@ -210,8 +210,9 @@ sfSelect, sfBuilder) {
 
           schemaForm.traverseSchema(schema, function(prop, path) {
 
-              // look only at schema fields that have a 'default' prop
-              if (angular.isDefined(prop['default'])) {
+              // look only at schema fields that have a 'default' prop (and no set value yet, e.g. via model defaults)
+              var valueBefore = sfSelect(path, scope.model);
+              if (angular.isDefined(prop['default']) && valueBefore === undefined) {
 
                   // let val = sfSelect(path, scope.model);
                   // if no value is currently set in the models field

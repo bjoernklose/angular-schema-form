@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form
  * @version 1.0.0-alpha.5
- * @date Thu, 19 Apr 2018 14:12:07 GMT
+ * @date Thu, 03 May 2018 12:14:51 GMT
  * @link https://github.com/json-schema-form/angular-schema-form
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
@@ -86,8 +86,8 @@ module.exports = angular;
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
  * json-schema-form-core
- * @version 1.0.0-alpha.4
- * @date Sat, 15 Apr 2017 08:25:55 GMT
+ * @version 1.0.0-alpha.5
+ * @date Sat, 24 Jun 2017 14:16:26 GMT
  * @link https://github.com/json-schema-form/json-schema-form-core
  * @license MIT
  * Copyright (c) 2014-2017 JSON Schema Form
@@ -4039,8 +4039,9 @@ FIXME: real documentation
 
         schemaForm.traverseSchema(schema, function (prop, path) {
 
-          // look only at schema fields that have a 'default' prop
-          if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isDefined(prop['default'])) {
+          // look only at schema fields that have a 'default' prop (and no set value yet, e.g. via model defaults)
+          var valueBefore = sfSelect(path, scope.model);
+          if (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.isDefined(prop['default']) && valueBefore === undefined) {
 
             // let val = sfSelect(path, scope.model);
             // if no value is currently set in the models field
